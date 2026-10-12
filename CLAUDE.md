@@ -8,3 +8,6 @@ Para editar o kit, altere `plugins/nivus-kit/`, suba a `version` em `plugin.json
 
 O marketplace também lista `ponytail` (github.com/DietrichGebert/ponytail, fixado num commit revisado):
 modo "dev sênior preguiçoso" que força a solução mais simples que funciona.
+
+Também lista `agent-skills` (github.com/addyosmani/agent-skills, fixado num commit): skills de engenharia
+para spec, plano, TDD, review, segurança, performance e entrega.

@@ -17,6 +17,15 @@
         "sha": "9b58c1ffb790c075ca32e70a89cf1d80588f4abf"
       },
       "description": "Modo dev sênior preguiçoso: a solução mais simples que funciona (YAGNI, stdlib primeiro, sem abstrações não pedidas). Por Dietrich Gebert, MIT."
+    },
+    {
+      "name": "agent-skills",
+      "source": {
+        "source": "github",
+        "repo": "addyosmani/agent-skills",
+        "sha": "1be8e34187e34647bb83adc3a1323b26ae6f6abe"
+      },
+      "description": "Skills de engenharia de Addy Osmani: spec, plano, TDD, review, segurança, performance, frontend e entrega (v0.6.12, MIT)."
     }
   ],
   "metadata": {

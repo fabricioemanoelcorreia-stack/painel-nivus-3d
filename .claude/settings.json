@@ -9,6 +9,7 @@
   },
   "enabledPlugins": {
     "nivus-kit@nivus": true,
-    "ponytail@nivus": true
+    "ponytail@nivus": true,
+    "agent-skills@nivus": true
   }
 }
