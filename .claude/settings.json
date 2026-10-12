@@ -1,18 +1,10 @@
 {
-  "hooks": {
-    "PostToolUse": [
-      {
-        "matcher": "Write|Edit",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/ui-guidelines-reminder.sh 2>/dev/null || true"
-          }
-        ]
-      }
-    ]
+  "extraKnownMarketplaces": {
+    "nivus": {
+      "source": { "source": "github", "repo": "fabricioemanoelcorreia-stack/painel-nivus-3d" }
+    }
   },
-  "enabledMcpjsonServers": [
-    "playwright"
-  ]
+  "enabledPlugins": {
+    "nivus-kit@nivus": true
+  }
 }

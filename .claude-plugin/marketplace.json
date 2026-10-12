@@ -1,0 +1,16 @@
+{
+  "name": "nivus",
+  "owner": {
+    "name": "fabricioemanoelcorreia-stack"
+  },
+  "plugins": [
+    {
+      "name": "nivus-kit",
+      "source": "./plugins/nivus-kit",
+      "description": "Design kit pessoal: skills de design, guidelines de interface, revisão automática de UI e Playwright MCP."
+    }
+  ],
+  "metadata": {
+    "description": "Kit pessoal de design para Claude Code"
+  }
+}

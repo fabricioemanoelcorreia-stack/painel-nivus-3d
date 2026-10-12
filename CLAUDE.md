@@ -1,6 +1,7 @@
 # painel-nivus-3d
 
-## Interface (UI)
+Este repositório também é o marketplace `nivus` do plugin `nivus-kit` (em `plugins/nivus-kit/`):
+skills de design (taste-skill e variações, biblioteca DESIGN.md com 74 marcas), comando
+`/web-interface-guidelines`, revisão automática de UI após edições e Playwright MCP.
 
-- Ao criar ou alterar interface, siga a skill `taste-skill` (design-taste-frontend) em `.claude/skills/`.
-- Antes de concluir qualquer mudança em arquivos de UI (`.tsx`, `.jsx`, `.html`, `.css`, `.vue`, `.svelte`), revise-os contra `.claude/commands/web-interface-guidelines.md` e corrija as violações. Um hook em `.claude/settings.json` lembra disso automaticamente após cada edição.
+Para editar o kit, altere `plugins/nivus-kit/`, suba a `version` em `plugin.json` e faça push.

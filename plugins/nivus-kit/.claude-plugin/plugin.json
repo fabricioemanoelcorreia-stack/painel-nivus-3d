@@ -1,0 +1,7 @@
+{
+  "name": "nivus-kit",
+  "description": "Design kit pessoal: taste-skill, biblioteca DESIGN.md (74 marcas), Vercel Web Interface Guidelines com revisão automática de UI e Playwright MCP.",
+  "version": "1.0.0",
+  "author": { "name": "fabricioemanoelcorreia-stack" },
+  "license": "MIT"
+}
