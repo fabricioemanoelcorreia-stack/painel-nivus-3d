@@ -29,7 +29,7 @@ if claude plugin marketplace add "$MARKETPLACE_REPO" >/dev/null 2>&1 || claude p
   ok "marketplace nivus"
 else
   echo "  ✗ Não consegui acessar github.com/$MARKETPLACE_REPO."
-  echo "    O repositório é privado: faça login no GitHub neste computador (ex.: 'gh auth login') e rode de novo."
+  echo "    Confira a internet. Se o repositório for privado, faça login no GitHub ('gh auth login') e rode de novo."
   exit 1
 fi
 for p in "${PLUGINS[@]}"; do

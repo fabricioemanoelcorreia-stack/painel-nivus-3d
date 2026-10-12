@@ -21,8 +21,8 @@ Instale, se ainda não tiver:
 2. **Git** — Windows: https://git-scm.com · Mac: já vem (ou `xcode-select --install`)
 3. **Node.js** (LTS) — https://nodejs.org — necessário para o Playwright MCP
 4. **Python 3.10+** (opcional) — https://python.org — usado pelo graphify. Se não tiver, só o graphify fica de fora.
-5. **Login no GitHub** — este repositório é privado, então o seu PC precisa ter acesso a ele.
-   O jeito mais fácil: instale o GitHub CLI (https://cli.github.com) e rode `gh auth login`.
+5. **Login no GitHub** — só é necessário se este repositório for privado. Nesse caso, instale o GitHub CLI
+   (https://cli.github.com) e rode `gh auth login`.
 
 ## 2. Instalar tudo
 
@@ -104,7 +104,8 @@ Antes de usar, saiba:
 
 | Mensagem | Solução |
 |---|---|
-| "Não consegui acessar github.com/…" | Falta login no GitHub: `gh auth login` e rode de novo. |
+| "Não consegui acessar github.com/…" | Confira a internet; se o repositório for privado, rode `gh auth login` e tente de novo. |
 | Playwright não abre o navegador | Instale o Node.js e rode o script de novo. |
 | `/graphify` reclama de Python | Instale o Python 3.10+; a skill instala o resto sozinha. |
+| `graphify` "não é reconhecido" (Windows) | Rode o instalador de novo: ele adiciona a pasta do graphify ao PATH. Depois abra um terminal novo. |
 | Windows bloqueou o script | Use exatamente `powershell -ExecutionPolicy Bypass -File …`. |

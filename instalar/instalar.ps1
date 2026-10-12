@@ -31,7 +31,7 @@ if ((Run "claude" @("plugin","marketplace","add",$MarketplaceRepo)) -or (Run "cl
   Ok "marketplace nivus"
 } else {
   Write-Host "  [x] Nao consegui acessar github.com/$MarketplaceRepo." -ForegroundColor Red
-  Write-Host "      O repositorio e privado: faca login no GitHub neste PC (ex.: 'gh auth login') e rode de novo."
+      Write-Host "      Confira a internet. Se o repositorio for privado, faca login no GitHub ('gh auth login') e rode de novo."
   exit 1
 }
 foreach ($p in $Plugins) {
@@ -47,6 +47,20 @@ elseif ((Has "pipx") -and (Run "pipx" @("install","graphifyy==$GraphifyVersion")
 elseif ((Has "py") -and (Run "py" @("-m","pip","install","--user","graphifyy==$GraphifyVersion"))) { Ok "instalado com pip" }
 elseif ((Has "python") -and (Run "python" @("-m","pip","install","--user","graphifyy==$GraphifyVersion"))) { Ok "instalado com pip" }
 else { Warn "nao instalei agora; a skill instala sozinha no primeiro uso (precisa de Python 3.10+)" }
+# pip --user instala em uma pasta Scripts que o Windows nao poe no PATH sozinho.
+if (-not (Has "graphify")) {
+  foreach ($py in @("py", "python")) {
+    if (-not (Has $py)) { continue }
+    $dir = & $py -c "import sysconfig; print(sysconfig.get_path('scripts', 'nt_user'))" 2>$null
+    if ($dir -and (Test-Path (Join-Path $dir "graphify.exe"))) {
+      $userPath = [Environment]::GetEnvironmentVariable("Path", "User")
+      if ($userPath -notlike "*$dir*") { [Environment]::SetEnvironmentVariable("Path", "$userPath;$dir", "User") }
+      $env:Path += ";$dir"
+      Ok "graphify adicionado ao PATH ($dir)"
+      break
+    }
+  }
+}
 
 Step "4/4 Navegador do Playwright MCP"
 if ((Has "npx") -and (Run "npx" @("-y","@playwright/mcp@$PlaywrightMcpVersion","install-browser","chromium"))) { Ok "Chromium instalado" }
