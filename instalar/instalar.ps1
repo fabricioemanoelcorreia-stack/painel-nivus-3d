@@ -51,7 +51,8 @@ try {
   if (-not $s.env) { $s | Add-Member -NotePropertyName env -NotePropertyValue ([pscustomobject]@{}) -Force }
   $s.env | Add-Member -NotePropertyName CLAUDE_MEM_TELEMETRY -NotePropertyValue "0" -Force
   $s.env | Add-Member -NotePropertyName HEADROOM_BEACON -NotePropertyValue "off" -Force
-  $s | ConvertTo-Json -Depth 20 | Set-Content $sp -Encoding UTF8
+  # sem BOM: um settings.json com BOM pode ser ignorado inteiro
+  [IO.File]::WriteAllText($sp, ($s | ConvertTo-Json -Depth 20), (New-Object Text.UTF8Encoding $false))
   Ok "telemetria do claude-mem e do headroom desligada"
 } catch { Warn "nao consegui desligar a telemetria: $_" }
 
