@@ -109,8 +109,8 @@ Antes de usar, saiba:
 **Headroom** — o instalador coloca o plugin e o programa `headroom` (0.40.0), mas **não liga** a compressão.
 Para ligar: `headroom init -g claude`. Isso faz o Claude Code passar por um proxy **no seu próprio PC**
 (porta 8787), que enxuga o contexto antes de enviar para a Anthropic. Se algo der errado com ele, o Claude Code
-para de responder: desfaça com `headroom init -g claude --help` (opção de remoção) ou
-`claude plugin disable headroom@nivus`.
+para de responder: confira com `headroom doctor` e desfaça com `headroom unwrap claude`
+(e `claude plugin disable headroom@nivus`). O instalador desliga a telemetria dele (`HEADROOM_BEACON=off`).
 
 **claude-mem** (`mem`) — guarda um resumo do que acontece nas sessões num banco local e usa o próprio Claude para
 resumir, então **gasta um pouco da sua cota**. No Windows pode piscar uma janela de console a cada ferramenta

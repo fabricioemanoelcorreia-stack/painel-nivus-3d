@@ -43,16 +43,17 @@ foreach ($p in $Plugins) {
 # Plugin oficial da Anthropic
 if (-not (Run "claude" @("plugin","marketplace","add","anthropics/claude-plugins-official"))) { Run "claude" @("plugin","marketplace","update","claude-plugins-official") | Out-Null }
 if (Run "claude" @("plugin","install","claude-code-setup@claude-plugins-official","--scope","user")) { Ok "claude-code-setup (oficial)" } else { Warn "falhou: claude-code-setup"; $falhas++ }
-# claude-mem envia estatisticas de uso por padrao; desligamos (nao afeta a memoria).
+# claude-mem e headroom enviam estatisticas de uso por padrao; desligamos (nao afeta o funcionamento).
 try {
   $cfg = if ($env:CLAUDE_CONFIG_DIR) { $env:CLAUDE_CONFIG_DIR } else { Join-Path $HOME ".claude" }
   $sp = Join-Path $cfg "settings.json"
   $s = if (Test-Path $sp) { Get-Content $sp -Raw | ConvertFrom-Json } else { [pscustomobject]@{} }
   if (-not $s.env) { $s | Add-Member -NotePropertyName env -NotePropertyValue ([pscustomobject]@{}) -Force }
   $s.env | Add-Member -NotePropertyName CLAUDE_MEM_TELEMETRY -NotePropertyValue "0" -Force
+  $s.env | Add-Member -NotePropertyName HEADROOM_BEACON -NotePropertyValue "off" -Force
   $s | ConvertTo-Json -Depth 20 | Set-Content $sp -Encoding UTF8
-  Ok "telemetria do claude-mem desligada"
-} catch { Warn "nao consegui desligar a telemetria do claude-mem: $_" }
+  Ok "telemetria do claude-mem e do headroom desligada"
+} catch { Warn "nao consegui desligar a telemetria: $_" }
 
 Step "3/4 Programas Python (graphify e headroom)"
 foreach ($cmd in $PyTools.Keys) {

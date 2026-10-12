@@ -43,11 +43,11 @@ done
 # Plugin oficial da Anthropic
 claude plugin marketplace add anthropics/claude-plugins-official >/dev/null 2>&1 || claude plugin marketplace update claude-plugins-official >/dev/null 2>&1
 if claude plugin install claude-code-setup@claude-plugins-official --scope user >/dev/null 2>&1; then ok "claude-code-setup (oficial)"; else warn "falhou: claude-code-setup"; falhas=$((falhas+1)); fi
-# claude-mem envia estatísticas de uso por padrão; desligamos (não afeta a memória).
+# claude-mem e headroom enviam estatísticas de uso por padrão; desligamos (não afeta o funcionamento).
 command -v node >/dev/null 2>&1 && node -e '
 const fs=require("fs"),p=require("path").join(process.env.CLAUDE_CONFIG_DIR||require("os").homedir()+"/.claude","settings.json");
 let s={};try{s=JSON.parse(fs.readFileSync(p,"utf8"))}catch{}
-s.env={...(s.env||{}),CLAUDE_MEM_TELEMETRY:"0"};fs.writeFileSync(p,JSON.stringify(s,null,2));' && ok "telemetria do claude-mem desligada"
+s.env={...(s.env||{}),CLAUDE_MEM_TELEMETRY:"0",HEADROOM_BEACON:"off"};fs.writeFileSync(p,JSON.stringify(s,null,2));' && ok "telemetria do claude-mem e do headroom desligada"
 
 step "3/4 Programas Python (graphify e headroom)"
 for t in "${PY_TOOLS[@]}"; do
