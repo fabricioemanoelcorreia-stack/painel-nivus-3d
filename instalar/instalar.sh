@@ -4,8 +4,9 @@
 set -u
 
 MARKETPLACE_REPO="fabricioemanoelcorreia-stack/painel-nivus-3d"
-PLUGINS=(nivus-kit ponytail agent-skills)
-GRAPHIFY_VERSION="0.9.70"
+PLUGINS=(nivus-kit ponytail agent-skills cartographer mem headroom)
+# Programas Python fixados: comando=pacote==versão
+PY_TOOLS=("graphify=graphifyy==0.9.70" "headroom=headroom-ai==0.40.0")
 PLAYWRIGHT_MCP_VERSION="0.0.83"
 OMNIROUTE_VERSION="3.8.50"
 COM_OMNIROUTE=0; [ "${1:-}" = "--com-omniroute" ] && COM_OMNIROUTE=1
@@ -39,19 +40,24 @@ for p in "${PLUGINS[@]}"; do
     warn "falhou: $p"; falhas=$((falhas+1))
   fi
 done
+# Plugin oficial da Anthropic
+claude plugin marketplace add anthropics/claude-plugins-official >/dev/null 2>&1 || claude plugin marketplace update claude-plugins-official >/dev/null 2>&1
+if claude plugin install claude-code-setup@claude-plugins-official --scope user >/dev/null 2>&1; then ok "claude-code-setup (oficial)"; else warn "falhou: claude-code-setup"; falhas=$((falhas+1)); fi
+# claude-mem envia estatísticas de uso por padrão; desligamos (não afeta a memória).
+command -v node >/dev/null 2>&1 && node -e '
+const fs=require("fs"),p=require("path").join(process.env.CLAUDE_CONFIG_DIR||require("os").homedir()+"/.claude","settings.json");
+let s={};try{s=JSON.parse(fs.readFileSync(p,"utf8"))}catch{}
+s.env={...(s.env||{}),CLAUDE_MEM_TELEMETRY:"0"};fs.writeFileSync(p,JSON.stringify(s,null,2));' && ok "telemetria do claude-mem desligada"
 
-step "3/4 graphify (programa usado pela skill /graphify)"
-if command -v graphify >/dev/null 2>&1; then
-  ok "já instalado"
-elif command -v uv >/dev/null 2>&1 && uv tool install "graphifyy==$GRAPHIFY_VERSION" >/dev/null 2>&1; then
-  ok "instalado com uv"
-elif command -v pipx >/dev/null 2>&1 && pipx install "graphifyy==$GRAPHIFY_VERSION" >/dev/null 2>&1; then
-  ok "instalado com pipx"
-elif command -v python3 >/dev/null 2>&1 && python3 -m pip install --user "graphifyy==$GRAPHIFY_VERSION" >/dev/null 2>&1; then
-  ok "instalado com pip"
-else
-  warn "não instalei agora; a skill instala sozinha no primeiro uso (precisa de Python 3.10+)"
-fi
+step "3/4 Programas Python (graphify e headroom)"
+for t in "${PY_TOOLS[@]}"; do
+  cmd=${t%%=*}; pkg=${t#*=}
+  if command -v "$cmd" >/dev/null 2>&1; then ok "$cmd já instalado"
+  elif command -v uv >/dev/null 2>&1 && uv tool install "$pkg" >/dev/null 2>&1; then ok "$cmd instalado com uv"
+  elif command -v pipx >/dev/null 2>&1 && pipx install "$pkg" >/dev/null 2>&1; then ok "$cmd instalado com pipx"
+  elif command -v python3 >/dev/null 2>&1 && python3 -m pip install --user "$pkg" >/dev/null 2>&1; then ok "$cmd instalado com pip"
+  else warn "não instalei $cmd (precisa de Python 3.10+)"; fi
+done
 
 step "4/4 Navegador do Playwright MCP"
 if [ -x /opt/pw-browsers/chromium ]; then
@@ -75,6 +81,7 @@ fi
 echo
 if [ "$falhas" -eq 0 ]; then
   echo "Pronto! Reinicie o Claude Code. Para conferir, digite /plugin dentro dele."
+  echo "Para ativar a compressão do Headroom: headroom init -g claude (veja o LEIA-ME)."
 else
   echo "Terminou com $falhas aviso(s) acima. Corrija e rode o script de novo."
 fi
