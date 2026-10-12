@@ -9,7 +9,7 @@ Instalando uma vez no seu PC, eles valem em **todos os projetos**, inclusive os 
 | **ponytail** | modo "dev sênior preguiçoso": a solução mais simples que funciona |
 | **agent-skills** | processo de engenharia do Addy Osmani: `/spec`, `/plan`, `/build`, `/test`, `/review`, `/webperf`, `/ship` + 4 agentes |
 
-> O **OmniRoute** ficou de fora de propósito: ele desvia seu código para provedores de terceiros e pode violar os termos de uso da sua conta.
+> O **OmniRoute** é opcional e instalado à parte — veja a seção 7.
 
 ---
 
@@ -77,6 +77,28 @@ para subir de versão, peça ao Claude para revisar a nova e atualizar este repo
 - Desligar o ponytail só na conversa: diga "stop ponytail".
 - Remover tudo: `claude plugin uninstall nivus-kit@nivus` (idem para `ponytail` e `agent-skills`)
   e `claude plugin marketplace remove nivus`.
+
+## 7. OmniRoute (opcional)
+
+Rode o instalador com a opção extra:
+
+- Windows: `powershell -ExecutionPolicy Bypass -File painel-nivus-3d\instalar\instalar.ps1 -ComOmniroute`
+- Mac/Linux: `bash painel-nivus-3d/instalar/instalar.sh --com-omniroute`
+
+Isso instala o programa `omniroute` (versão 3.8.50) **sem mexer no seu Claude Code normal**: `claude` continua
+usando a sua conta da Anthropic. Para usar o OmniRoute:
+
+1. `omniroute setup` — assistente inicial; conecte os provedores e crie a chave dele.
+2. `omniroute serve` — deixe rodando (painel em http://localhost:20128).
+3. `omniroute run claude` — abre um Claude Code que passa pelo OmniRoute. Só esse terminal usa o roteador.
+
+Antes de usar, saiba:
+
+- **Seu código e conversas vão para os provedores que você conectar.** Conecte só os que você confia, com contas suas.
+- **Não conecte sua assinatura do Claude (Pro/Max) a ele.** Usar a assinatura por um proxy de terceiros pode
+  violar os termos da Anthropic e bloquear sua conta. Os provedores marcados como "avoid" no painel dele têm o mesmo risco.
+- Ele não funciona nas sessões na nuvem (precisa ficar ligado no seu PC).
+- Para remover: `npm uninstall -g omniroute`.
 
 ## Problemas comuns
 

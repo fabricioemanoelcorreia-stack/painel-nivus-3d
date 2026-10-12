@@ -7,6 +7,8 @@ MARKETPLACE_REPO="fabricioemanoelcorreia-stack/painel-nivus-3d"
 PLUGINS=(nivus-kit ponytail agent-skills)
 GRAPHIFY_VERSION="0.9.70"
 PLAYWRIGHT_MCP_VERSION="0.0.83"
+OMNIROUTE_VERSION="3.8.50"
+COM_OMNIROUTE=0; [ "${1:-}" = "--com-omniroute" ] && COM_OMNIROUTE=1
 
 ok()   { printf '  \033[32m✓\033[0m %s\n' "$1"; }
 warn() { printf '  \033[33m!\033[0m %s\n' "$1"; }
@@ -58,6 +60,16 @@ elif command -v npx >/dev/null 2>&1 && npx -y "@playwright/mcp@$PLAYWRIGHT_MCP_V
   ok "Chromium instalado"
 else
   warn "não instalei agora; ele é baixado no primeiro uso"
+fi
+
+# Opcional: só com --com-omniroute. Instala o programa, mas não muda o Claude Code normal.
+if [ "$COM_OMNIROUTE" -eq 1 ]; then
+  step "Extra: OmniRoute"
+  if command -v npm >/dev/null 2>&1 && npm install -g "omniroute@$OMNIROUTE_VERSION" >/dev/null 2>&1; then
+    ok "OmniRoute $OMNIROUTE_VERSION instalado. Próximo passo: rode 'omniroute setup' (veja o LEIA-ME)"
+  else
+    warn "falhou: OmniRoute (precisa do Node.js/npm; no Mac/Linux pode exigir permissão para 'npm install -g')"; falhas=$((falhas+1))
+  fi
 fi
 
 echo

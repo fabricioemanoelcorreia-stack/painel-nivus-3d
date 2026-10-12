@@ -1,11 +1,14 @@
 # Instala o kit completo do Claude Code no Windows.
 # Uso (PowerShell): powershell -ExecutionPolicy Bypass -File instalar\instalar.ps1
-# Pode rodar de novo para atualizar.
+# Pode rodar de novo para atualizar. Opcional: -ComOmniroute
+
+param([switch]$ComOmniroute)
 
 $MarketplaceRepo      = "fabricioemanoelcorreia-stack/painel-nivus-3d"
 $Plugins              = @("nivus-kit", "ponytail", "agent-skills")
 $GraphifyVersion      = "0.9.70"
 $PlaywrightMcpVersion = "0.0.83"
+$OmniRouteVersion     = "3.8.50"
 $falhas = 0
 
 function Ok($m)   { Write-Host "  [ok] $m" -ForegroundColor Green }
@@ -48,6 +51,13 @@ else { Warn "nao instalei agora; a skill instala sozinha no primeiro uso (precis
 Step "4/4 Navegador do Playwright MCP"
 if ((Has "npx") -and (Run "npx" @("-y","@playwright/mcp@$PlaywrightMcpVersion","install-browser","chromium"))) { Ok "Chromium instalado" }
 else { Warn "nao instalei agora; ele e baixado no primeiro uso" }
+
+# Opcional: so com -ComOmniroute. Instala o programa, mas nao muda o Claude Code normal.
+if ($ComOmniroute) {
+  Step "Extra: OmniRoute"
+  if ((Has "npm") -and (Run "npm" @("install","-g","omniroute@$OmniRouteVersion"))) { Ok "OmniRoute $OmniRouteVersion instalado. Proximo passo: rode 'omniroute setup' (veja o LEIA-ME)" }
+  else { Warn "falhou: OmniRoute (precisa do Node.js/npm)"; $falhas++ }
+}
 
 Write-Host ""
 if ($falhas -eq 0) { Write-Host "Pronto! Reinicie o Claude Code. Para conferir, digite /plugin dentro dele." -ForegroundColor Green }
