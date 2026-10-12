@@ -12,3 +12,6 @@ modo "dev sênior preguiçoso" que força a solução mais simples que funciona.
 
 Também lista `agent-skills` (github.com/addyosmani/agent-skills, fixado num commit): skills de engenharia
 para spec, plano, TDD, review, segurança, performance e entrega.
+
+Também lista `cartographer`, `mem` (claude-mem; nome trocado porque "claude-" é reservado) e `headroom`,
+todos fixados num commit. Os instaladores ainda instalam o plugin oficial `claude-code-setup`.

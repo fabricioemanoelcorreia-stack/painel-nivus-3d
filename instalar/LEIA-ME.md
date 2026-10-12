@@ -1,6 +1,6 @@
 # Kit do Claude Code — como instalar
 
-Tudo o que você pediu fica reunido em **3 plugins** no marketplace `nivus` (este repositório).
+Tudo o que você pediu fica reunido no marketplace `nivus` (este repositório), mais um plugin oficial da Anthropic.
 Instalando uma vez no seu PC, eles valem em **todos os projetos**, inclusive os que você ainda vai criar.
 
 | Plugin | O que traz |
@@ -8,6 +8,10 @@ Instalando uma vez no seu PC, eles valem em **todos os projetos**, inclusive os 
 | **nivus-kit** | taste-skill e variações de estilo (minimalista, brutalista, soft, redesign, stitch, image-to-code, imagegen…), biblioteca **DESIGN.md** com 74 marcas, **Web Interface Guidelines** da Vercel (+ revisão automática depois de editar arquivos de interface), **Playwright MCP** (navegador para prints) e **graphify** (mapa do código) |
 | **ponytail** | modo "dev sênior preguiçoso": a solução mais simples que funciona |
 | **agent-skills** | processo de engenharia do Addy Osmani: `/spec`, `/plan`, `/build`, `/test`, `/review`, `/webperf`, `/ship` + 4 agentes |
+| **cartographer** | mapeia o projeto com vários subagentes e gera `docs/CODEBASE_MAP.md` |
+| **mem** (claude-mem) | memória entre sessões: lembra o que foi feito e injeta no começo da próxima |
+| **headroom** | compressão de contexto local para gastar menos tokens (precisa ser ativado, seção 8) |
+| **claude-code-setup** (oficial) | analisa o projeto e sugere hooks, skills, MCPs e agentes |
 
 > O **OmniRoute** é opcional e instalado à parte — veja a seção 7.
 
@@ -99,6 +103,19 @@ Antes de usar, saiba:
   violar os termos da Anthropic e bloquear sua conta. Os provedores marcados como "avoid" no painel dele têm o mesmo risco.
 - Ele não funciona nas sessões na nuvem (precisa ficar ligado no seu PC).
 - Para remover: `npm uninstall -g omniroute`.
+
+## 8. Headroom e claude-mem: o que saber
+
+**Headroom** — o instalador coloca o plugin e o programa `headroom` (0.40.0), mas **não liga** a compressão.
+Para ligar: `headroom init -g claude`. Isso faz o Claude Code passar por um proxy **no seu próprio PC**
+(porta 8787), que enxuga o contexto antes de enviar para a Anthropic. Se algo der errado com ele, o Claude Code
+para de responder: desfaça com `headroom init -g claude --help` (opção de remoção) ou
+`claude plugin disable headroom@nivus`.
+
+**claude-mem** (`mem`) — guarda um resumo do que acontece nas sessões num banco local e usa o próprio Claude para
+resumir, então **gasta um pouco da sua cota**. No Windows pode piscar uma janela de console a cada ferramenta
+(problema conhecido do projeto). O instalador **desliga a telemetria** dele (`CLAUDE_MEM_TELEMETRY=0`).
+A sincronização na nuvem (cmem.ai) só liga se você configurar.
 
 ## Problemas comuns
 
