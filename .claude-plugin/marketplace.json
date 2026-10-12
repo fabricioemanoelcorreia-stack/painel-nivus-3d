@@ -8,6 +8,15 @@
       "name": "nivus-kit",
       "source": "./plugins/nivus-kit",
       "description": "Design kit pessoal: skills de design, guidelines de interface, revisão automática de UI e Playwright MCP."
+    },
+    {
+      "name": "ponytail",
+      "source": {
+        "source": "github",
+        "repo": "DietrichGebert/ponytail",
+        "sha": "9b58c1ffb790c075ca32e70a89cf1d80588f4abf"
+      },
+      "description": "Modo dev sênior preguiçoso: a solução mais simples que funciona (YAGNI, stdlib primeiro, sem abstrações não pedidas). Por Dietrich Gebert, MIT."
     }
   ],
   "metadata": {

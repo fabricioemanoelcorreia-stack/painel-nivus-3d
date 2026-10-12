@@ -1,10 +1,14 @@
 {
   "extraKnownMarketplaces": {
     "nivus": {
-      "source": { "source": "github", "repo": "fabricioemanoelcorreia-stack/painel-nivus-3d" }
+      "source": {
+        "source": "github",
+        "repo": "fabricioemanoelcorreia-stack/painel-nivus-3d"
+      }
     }
   },
   "enabledPlugins": {
-    "nivus-kit@nivus": true
+    "nivus-kit@nivus": true,
+    "ponytail@nivus": true
   }
 }
