@@ -1,7 +1,7 @@
 {
   "name": "nivus-kit",
-  "description": "Design kit pessoal: taste-skill, biblioteca DESIGN.md (74 marcas), Vercel Web Interface Guidelines com revisão automática de UI, Playwright MCP e graphify (grafo de conhecimento do código).",
-  "version": "1.2.0",
+  "description": "Design kit pessoal: taste-skill, biblioteca DESIGN.md (74 marcas), Vercel Web Interface Guidelines com revisão automática de UI, Playwright MCP e graphify (grafo de conhecimento do código). Inclui o MCP da Kairogen (requer login).",
+  "version": "1.3.0",
   "author": {
     "name": "fabricioemanoelcorreia-stack"
   },

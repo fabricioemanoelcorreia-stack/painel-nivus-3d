@@ -2,7 +2,7 @@
 
 Este repositório também é o marketplace `nivus` do plugin `nivus-kit` (em `plugins/nivus-kit/`):
 skills de design (taste-skill e variações, biblioteca DESIGN.md com 74 marcas), graphify (grafo do código), comando
-`/web-interface-guidelines`, revisão automática de UI após edições e Playwright MCP.
+`/web-interface-guidelines`, revisão automática de UI após edições, Playwright MCP e o MCP remoto da Kairogen.
 
 Para editar o kit, altere `plugins/nivus-kit/`, suba a `version` em `plugin.json` e faça push.
 Instaladores e guia: `instalar/` (instalar.sh, instalar.ps1, setup-nuvem.sh, LEIA-ME.md).

@@ -5,7 +5,7 @@ Instalando uma vez no seu PC, eles valem em **todos os projetos**, inclusive os 
 
 | Plugin | O que traz |
 |---|---|
-| **nivus-kit** | taste-skill e variações de estilo (minimalista, brutalista, soft, redesign, stitch, image-to-code, imagegen…), biblioteca **DESIGN.md** com 74 marcas, **Web Interface Guidelines** da Vercel (+ revisão automática depois de editar arquivos de interface), **Playwright MCP** (navegador para prints) e **graphify** (mapa do código) |
+| **nivus-kit** | taste-skill e variações de estilo (minimalista, brutalista, soft, redesign, stitch, image-to-code, imagegen…), biblioteca **DESIGN.md** com 74 marcas, **Web Interface Guidelines** da Vercel (+ revisão automática depois de editar arquivos de interface), **Playwright MCP** (navegador para prints), **graphify** (mapa do código) e o **MCP da Kairogen** (precisa de login: digite `/mcp` no Claude Code, escolha `kairogen` e entre com sua conta) |
 | **ponytail** | modo "dev sênior preguiçoso": a solução mais simples que funciona |
 | **agent-skills** | processo de engenharia do Addy Osmani: `/spec`, `/plan`, `/build`, `/test`, `/review`, `/webperf`, `/ship` + 4 agentes |
 | **cartographer** | mapeia o projeto com vários subagentes e gera `docs/CODEBASE_MAP.md` |

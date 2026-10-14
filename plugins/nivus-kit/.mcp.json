@@ -2,7 +2,13 @@
   "mcpServers": {
     "playwright": {
       "command": "node",
-      "args": ["${CLAUDE_PLUGIN_ROOT}/scripts/playwright-mcp.mjs"]
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/scripts/playwright-mcp.mjs"
+      ]
+    },
+    "kairogen": {
+      "type": "http",
+      "url": "https://mcp.kairogen.ai/mcp"
     }
   }
 }
