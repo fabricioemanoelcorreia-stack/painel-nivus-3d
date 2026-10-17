@@ -56,6 +56,15 @@
         "sha": "976aa714ef3e19174dc0cb586cee7b20d064e4ef"
       },
       "description": "Hooks do Headroom (compressão de contexto local). Requer o programa headroom-ai 0.40.0."
+    },
+    {
+      "name": "instagram-agent",
+      "source": {
+        "source": "github",
+        "repo": "Jakeschincariol/instagram-agent-skill",
+        "sha": "d03c56bb598be770c60b201f94237e5d1a4268a6"
+      },
+      "description": "13 skills para Instagram: reels, ganchos, legendas, carrosséis, stories, plano semanal, DMs e humanizador de texto (Jake Schincariol, MIT)."
     }
   ],
   "metadata": {

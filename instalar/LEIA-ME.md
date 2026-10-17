@@ -11,6 +11,7 @@ Instalando uma vez no seu PC, eles valem em **todos os projetos**, inclusive os 
 | **cartographer** | mapeia o projeto com vários subagentes e gera `docs/CODEBASE_MAP.md` |
 | **mem** (claude-mem) | memória entre sessões: lembra o que foi feito e injeta no começo da próxima |
 | **headroom** | compressão de contexto local para gastar menos tokens (precisa ser ativado, seção 8) |
+| **instagram-agent** | 13 skills para Instagram: `/ig-reel`, `/ig-viral`, `/ig-caption`, `/ig-carousel`, `/ig-plan`, `/ig-human` e outras. Preencha `~/.claude/instagram/voice.md` com seu jeito de falar |
 | **claude-code-setup** (oficial) | analisa o projeto e sugere hooks, skills, MCPs e agentes |
 
 > O **OmniRoute** é opcional e instalado à parte — veja a seção 7.

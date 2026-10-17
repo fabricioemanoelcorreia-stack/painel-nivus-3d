@@ -15,3 +15,4 @@ para spec, plano, TDD, review, segurança, performance e entrega.
 
 Também lista `cartographer`, `mem` (claude-mem; nome trocado porque "claude-" é reservado) e `headroom`,
 todos fixados num commit. Os instaladores ainda instalam o plugin oficial `claude-code-setup`.
+Também lista `instagram-agent` (github.com/Jakeschincariol/instagram-agent-skill, fixado num commit): 13 skills de Instagram.

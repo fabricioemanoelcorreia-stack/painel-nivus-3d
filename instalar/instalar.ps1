@@ -5,7 +5,7 @@
 param([switch]$ComOmniroute)
 
 $MarketplaceRepo      = "fabricioemanoelcorreia-stack/painel-nivus-3d"
-$Plugins              = @("nivus-kit", "ponytail", "agent-skills", "cartographer", "mem", "headroom")
+$Plugins              = @("nivus-kit", "ponytail", "agent-skills", "cartographer", "mem", "headroom", "instagram-agent")
 # Programas Python fixados: comando = pacote==versao
 $PyTools              = [ordered]@{ "graphify" = "graphifyy==0.9.70"; "headroom" = "headroom-ai==0.40.0" }
 $PlaywrightMcpVersion = "0.0.83"

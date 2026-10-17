@@ -4,7 +4,7 @@
 set -u
 
 MARKETPLACE_REPO="fabricioemanoelcorreia-stack/painel-nivus-3d"
-PLUGINS=(nivus-kit ponytail agent-skills cartographer mem headroom)
+PLUGINS=(nivus-kit ponytail agent-skills cartographer mem headroom instagram-agent)
 # Programas Python fixados: comando=pacote==versão
 PY_TOOLS=("graphify=graphifyy==0.9.70" "headroom=headroom-ai==0.40.0")
 PLAYWRIGHT_MCP_VERSION="0.0.83"
