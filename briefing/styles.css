@@ -1,0 +1,240 @@
+:root {
+  --grafite: #2b2d31;
+  --cinza-escuro: #5b5f66;
+  --cinza: #8d9097;
+  --cinza-claro: #e6e7e9;
+  --fundo: #f4f4f5;
+  --branco: #ffffff;
+  --destaque: #3f6b5b;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --grafite: #ecedef;
+    --cinza-escuro: #b4b7bd;
+    --cinza: #7d8189;
+    --cinza-claro: #34373d;
+    --fundo: #1a1b1e;
+    --branco: #24262b;
+    --destaque: #7fb9a3;
+  }
+}
+
+:root[data-theme="dark"] {
+  --grafite: #ecedef;
+  --cinza-escuro: #b4b7bd;
+  --cinza: #7d8189;
+  --cinza-claro: #34373d;
+  --fundo: #1a1b1e;
+  --branco: #24262b;
+  --destaque: #7fb9a3;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--fundo);
+  color: var(--grafite);
+  line-height: 1.45;
+}
+
+a { color: inherit; }
+
+.topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--branco);
+  border-bottom: 1px solid var(--cinza-claro);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.marca { font-weight: 700; text-decoration: none; }
+#cliente-topo { color: var(--cinza-escuro); font-size: 0.9rem; text-align: right; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+main, #app {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 20px 16px 48px;
+}
+
+h1 { font-size: 1.5rem; margin: 8px 0 16px; }
+h2 { font-size: 1.1rem; margin: 0 0 6px; }
+
+.intro p { color: var(--cinza-escuro); }
+
+.migalhas { font-size: 0.9rem; color: var(--cinza-escuro); }
+.migalhas a { text-decoration: none; }
+.migalhas a:hover { text-decoration: underline; }
+
+/* Cards de cômodos */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+.card {
+  display: block;
+  background: var(--branco);
+  border: 1px solid var(--cinza-claro);
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: border-color 0.15s, transform 0.15s;
+}
+.card:hover { border-color: var(--cinza); transform: translateY(-2px); }
+.card-texto { padding: 14px; }
+.card-texto p { margin: 0; color: var(--cinza-escuro); font-size: 0.92rem; }
+
+/* Fotos (placeholder até as imagens existirem) */
+.card img, .opcao img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--cinza-claro);
+}
+.foto-vazia {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: repeating-linear-gradient(45deg, var(--cinza-claro) 0 10px, var(--fundo) 10px 20px);
+  color: var(--cinza);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Lista de sessões */
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.linha {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: var(--branco);
+  border: 1px solid var(--cinza-claro);
+  border-radius: 10px;
+  text-decoration: none;
+}
+.linha:hover { border-color: var(--cinza); }
+.linha.ok { border-left: 4px solid var(--destaque); }
+.contagem { color: var(--cinza-escuro); font-size: 0.9rem; font-variant-numeric: tabular-nums; }
+
+/* Campos */
+.campos { display: flex; flex-direction: column; gap: 14px; }
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  padding: 16px;
+  background: var(--branco);
+  border: 1px solid var(--cinza-claro);
+  border-radius: 10px;
+  min-width: 0;
+}
+.rotulo { font-weight: 600; font-size: 0.95rem; }
+input, textarea {
+  font: inherit;
+  color: inherit;
+  padding: 10px 12px;
+  border: 1px solid var(--cinza);
+  border-radius: 8px;
+  background: var(--fundo);
+  width: 100%;
+}
+input:focus, textarea:focus, .opcao:focus-visible { outline: 2px solid var(--destaque); outline-offset: 2px; }
+
+.cores {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 10px;
+}
+.cores label { display: flex; flex-direction: column; gap: 4px; font-size: 0.85rem; color: var(--cinza-escuro); }
+
+/* Opções com foto */
+.opcoes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+}
+.opcao {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 10px;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  background: var(--fundo);
+  border: 2px solid transparent;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.opcao:hover { border-color: var(--cinza); }
+.opcao.sel { border-color: var(--destaque); }
+.opcao.sel::after {
+  content: "✓";
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--destaque);
+  color: #fff;
+  font-weight: 700;
+}
+.op-rotulo { padding: 8px 10px 0; font-weight: 600; font-size: 0.92rem; }
+.opcao small { padding: 2px 10px 0; color: var(--cinza-escuro); font-size: 0.8rem; }
+
+/* Botões e navegação */
+.acoes { margin-top: 24px; display: flex; justify-content: flex-end; }
+.acoes-duas { justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.primario, .secundario, .acoes button {
+  display: inline-block;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+.primario { background: var(--grafite); color: var(--branco); }
+.secundario { background: var(--branco); border-color: var(--cinza); color: var(--grafite); }
+
+/* Impressão / PDF: só a folha aparece */
+#impressao { display: none; }
+
+@media print {
+  @page { size: A4; margin: 14mm; }
+  body { background: #fff; color: #000; }
+  .topo, #app { display: none !important; }
+  #impressao { display: block; }
+  .folha { font-size: 11pt; }
+  .folha-topo h1 { font-size: 16pt; margin: 0 0 8px; }
+  .folha-topo dl { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 16px; margin: 0 0 12px; }
+  .folha-topo dl div { display: flex; gap: 6px; }
+  .folha-topo dt { font-weight: 700; }
+  .folha-topo dd { margin: 0; }
+  .folha-secao { break-inside: avoid; margin-bottom: 10px; }
+  .folha-secao h2 { font-size: 12pt; background: #e6e7e9; padding: 4px 8px; margin: 0 0 4px; }
+  .folha-secao table { width: 100%; border-collapse: collapse; }
+  .folha-secao th, .folha-secao td { border: 1px solid #bbb; padding: 4px 8px; text-align: left; vertical-align: top; }
+  .folha-secao th { width: 38%; font-weight: 600; }
+}
